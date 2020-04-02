@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>扩展运算符 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="es6扩展运算符    拓展运算符，是es6一个很好的特性，它们可以通过减少赋值语句的使用，或者减少通过下标访问数组或对象的方式，使代码更加简洁优雅，可读性更佳。下面我将列出拓展运算符的主要应用场景，以及相关知识。 1、在函数调用时使用拓展运算符。以前如果我们想将数组元素迭代为函数参数使用，一般使用Function.prototype.apply的方式。 12345function myFunct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扩展运算符">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/2020-03-06-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="es6扩展运算符    拓展运算符，是es6一个很好的特性，它们可以通过减少赋值语句的使用，或者减少通过下标访问数组或对象的方式，使代码更加简洁优雅，可读性更佳。下面我将列出拓展运算符的主要应用场景，以及相关知识。 1、在函数调用时使用拓展运算符。以前如果我们想将数组元素迭代为函数参数使用，一般使用Function.prototype.apply的方式。 12345function myFunct">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-02T10:11:32.906Z">
+<meta property="article:modified_time" content="2020-04-02T10:11:41.664Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-03-06-扩展运算符" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/02/2020-03-06-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/" class="article-date">
+  <time datetime="2020-04-02T10:11:32.906Z" itemprop="datePublished">2020-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      扩展运算符
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>es6扩展运算符</p>
+<!--truncate-->
+
+
+<p>拓展运算符，是es6一个很好的特性，它们可以通过减少赋值语句的使用，或者减少通过下标访问数组或对象的方式，使代码更加简洁优雅，可读性更佳。下面我将列出拓展运算符的主要应用场景，以及相关知识。</p>
+<h3 id="1、在函数调用时使用拓展运算符。"><a href="#1、在函数调用时使用拓展运算符。" class="headerlink" title="1、在函数调用时使用拓展运算符。"></a><strong>1、在函数调用时使用拓展运算符。</strong></h3><p>以前如果我们想将数组元素迭代为函数参数使用，一般使用Function.prototype.apply的方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function myFunction(x, y, z) &#123; </span><br><span class="line">  console.log(x+&quot;&quot;+y+&quot;&quot;+z);</span><br><span class="line">&#125; </span><br><span class="line">var args &#x3D; [0, 1, 2]; </span><br><span class="line">myFunction.apply(null, args);</span><br></pre></td></tr></table></figure>
+<p>有了展开语法，我们可以这样写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function myFunction(x, y, z) &#123; </span><br><span class="line">  console.log(x+&quot;&quot;+y+&quot;&quot;+z); </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">var args &#x3D; [0, 1, 2]; </span><br><span class="line">myFunction(...args);</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong> …arr返回的并不是一个数组，而是各个数组的值。只有[…arr]才是一个数组，所以…arr可以用来对方法进行传值</p>
+<h3 id="2、数组和对象的拷贝。"><a href="#2、数组和对象的拷贝。" class="headerlink" title="2、数组和对象的拷贝。"></a><strong>2、数组和对象的拷贝。</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr1 &#x3D; [1,2,3];</span><br><span class="line">var arr2 &#x3D; [...arr1];</span><br><span class="line">arr2.push(4);</span><br><span class="line">console.log(arr1 &#x3D;&#x3D;&#x3D; arr2);  &#x2F;&#x2F; false</span><br><span class="line">console.log(arr1); &#x2F;&#x2F; [1,2,3]</span><br><span class="line">console.log(arr2);&#x2F;&#x2F; [1,2,3,4]</span><br></pre></td></tr></table></figure>
+<p>对象也是一样，也可以使用拓展运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;  </span><br><span class="line">    a:1,</span><br><span class="line">    b:2</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 &#x3D; &#123;...obj1&#125;;</span><br><span class="line">console.log(obj2); &#x2F;&#x2F;&#123; a:1, b:2&#125;</span><br><span class="line">console.log(obj1 &#x3D;&#x3D;&#x3D; obj2);&#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<p><strong>提示:</strong> 在这里你会发现，这是一个深拷贝，其实不然，实际上, 展开语法和 Object.assign() 行为一致, 执行的都是浅拷贝(只遍历一层)。</p>
+<h3 id="3、构造字面量数组。"><a href="#3、构造字面量数组。" class="headerlink" title="3、构造字面量数组。"></a><strong>3</strong>、构造字面量数组。</h3><p>没有展开语法的时候，只能组合使用 push, splice, concat 等方法，来将已有数组元素变成新数组的一部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr1 &#x3D; [1,2,3];</span><br><span class="line">var arr2 &#x3D; [4,5,...arr1];</span><br><span class="line">console.log(arr2);&#x2F;&#x2F; [4,5,1,2,3]</span><br></pre></td></tr></table></figure>
+<p>代替Array.concat 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; ES5 的合并数组</span><br><span class="line">arr3.concat(arr1, arr2);</span><br><span class="line">&#x2F;&#x2F; [ 1, 2, 3, 4, 5, 6 ]</span><br><span class="line"> </span><br><span class="line">var arr1 &#x3D; [1,2,3];</span><br><span class="line">var arr2 &#x3D; [4,5,6];</span><br><span class="line">var demo &#x3D; [...arr1,...arr2];</span><br><span class="line">console.log(demo);&#x2F;&#x2F;  [1, 2, 3, 4, 5, 6]</span><br></pre></td></tr></table></figure>
+<p>代替Array.unshift 方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr1 &#x3D; [1,2,3];</span><br><span class="line">var arr2 &#x3D; [4,5,6];</span><br><span class="line">arr1 &#x3D; [...arr2,...arr1];</span><br><span class="line">console.log(arr1);&#x2F;&#x2F;  [4, 5, 6, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h3 id="4、字符串转数组。"><a href="#4、字符串转数组。" class="headerlink" title="4、字符串转数组。"></a><strong>4、字符串转数组。</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var demo &#x3D; &quot;hello&quot;</span><br><span class="line">var str &#x3D; [...demo];</span><br><span class="line">console.log(str);&#x2F;&#x2F; [&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;]</span><br></pre></td></tr></table></figure>
+<p>剩余语法（剩余参数，rest运算符）</p>
+<p><strong>剩余语法(Rest syntax)</strong> 看起来和展开语法完全相同，不同点在于, 剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素。</p>
+<p><strong>1、主要用于不定参数，所以es6开始不再使用arguments对象。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var demo &#x3D; function (...arg)&#123;   </span><br><span class="line">    for (let item of arg)&#123;       </span><br><span class="line">        console.log(item);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">demo(1,2,3);&#x2F;&#x2F; 1&#x2F;&#x2F; 2&#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var demo &#x3D; function (a,...arg)&#123;  </span><br><span class="line">    console.log(a);  </span><br><span class="line">    console.log(arg);</span><br><span class="line">&#125;</span><br><span class="line">demo(1,2,3,4);&#x2F;&#x2F; 1&#x2F;&#x2F; [2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p><strong>2、配合解构一起使用。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var [a,...rest] &#x3D; [1,2,3,4];</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(rest);&#x2F;&#x2F; 1&#x2F;&#x2F; [2,3,4]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj &#x3D; &#123;  a:1,  b:2,  c:3&#125;</span><br><span class="line">var &#123;a,...demo&#125; &#x3D; obj;</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(demo);&#x2F;&#x2F; 1&#x2F;&#x2F; &#123;b:2,c:3&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function f(...[a, b, c]) &#123;  </span><br><span class="line">    console.log(a);  </span><br><span class="line">    return a + b + c;</span><br><span class="line">&#125;console.log(f(1))          &#x2F;&#x2F;1, NaN </span><br><span class="line">console.log(f(1, 2, 3))   &#x2F;&#x2F; 1, 6</span><br><span class="line">console.log(f(1, 2, 3, 4)) &#x2F;&#x2F;1, 6</span><br></pre></td></tr></table></figure>
+<p><strong>小结：</strong><br>等号表达式是典型的赋值形式，函数传参和for循环的变量都是特殊形式的赋值。解构的原理是赋值的两边具有相同的结构，就可以正确取出数组或对象里面的元素或属性值，省略了使用下标逐个赋值的麻烦。对于三个点号，三点放在形参或者等号左边为rest运算符; 放在实参或者等号右边为spread运算符，或者说，放在被赋值一方为rest运算符，放在赋值一方为扩展运算符。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/02/2020-03-06-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="ck8ilnj6z0004x8wah4fb9y7n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/" rel="tag">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/02/2020-03-06-es6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          es6新特性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/" rel="tag">es6</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/02/2020-03-06-es6/">es6新特性</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/02/2020-03-06-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/">扩展运算符</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
