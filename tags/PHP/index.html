@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>es6新特性 | Hexo</title>
+  <title>Tag: PHP | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ES6语法 const 与 let 变量 使用var带来的麻烦:">
-<meta property="og:type" content="article">
-<meta property="og:title" content="es6新特性">
-<meta property="og:url" content="http://yoursite.com/2020/04/02/2020-03-06-es6/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/PHP/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ES6语法 const 与 let 变量 使用var带来的麻烦:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-02T10:11:32.906Z">
-<meta property="article:modified_time" content="2020-04-03T09:49:45.773Z">
 <meta property="article:author" content="Xsiqi">
-<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -155,389 +150,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2020-03-06-es6" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      es6新特性
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/11/tp5.1%E9%AA%8C%E8%AF%81%E7%A0%81%E6%A0%A1%E9%AA%8C%E5%A4%B1%E8%B4%A5/" class="archive-article-date">
+  	<time datetime="2020-04-11T06:30:10.594Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/11/tp5.1%E9%AA%8C%E8%AF%81%E7%A0%81%E6%A0%A1%E9%AA%8C%E5%A4%B1%E8%B4%A5/">tp5.1使用captcha验证码校验失败</a>
     </h1>
   
 
-        
-        <a href="/2020/04/02/2020-03-06-es6/" class="archive-article-date">
-  	<time datetime="2020-04-02T10:11:32.906Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES6语法</p>
-<p>const 与 let 变量</p>
-<p>使用var带来的麻烦:</p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function getClothing(isCold) &#123;</span><br><span class="line">  if (isCold) &#123;</span><br><span class="line">    var freezing &#x3D; &#39;Grab a jacket!&#39;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    var hot &#x3D; &#39;It&#39;s a shorts kind of day.&#39;;</span><br><span class="line">    console.log(freezing);</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行getClothing(false)后输出的是undefined,这是因为执行function函数之前,所有变量都会被提升, 提升到函数作用域顶部.</p>
-<p>let与const声明的变量解决了这种问题,因为他们是块级作用域, 在代码块(用{}表示)中使用let或const声明变量, 该变量会陷入暂时性死区直到该变量的声明被处理.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function getClothing(isCold) &#123;</span><br><span class="line">  if (isCold) &#123;</span><br><span class="line">    const freezing &#x3D; &#39;Grab a jacket!&#39;;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    const hot &#x3D; &#39;It&#39;s a shorts kind of day.&#39;;</span><br><span class="line">    console.log(freezing);</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行getClothing(false)后输出的是ReferenceError: freezing is not defined,因为 freezing 没有在 else 语句、函数作用域或全局作用域内声明，所以抛出 ReferenceError。</p>
-<p>关于使用let与const规则:</p>
-<p>使用let声明的变量可以重新赋值,但是不能在同一作用域内重新声明</p>
-<p>使用const声明的变量必须赋值初始化,但是不能在同一作用域类重新声明也无法重新赋值.</p>
-<p>模板字面量<br>在ES6之前,将字符串连接到一起的方法是+或者concat()方法,如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const student &#x3D; &#123;</span><br><span class="line">  name: &#39;Richard Kalehoff&#39;,</span><br><span class="line">  guardian: &#39;Mr. Kalehoff&#39;&#125;;const teacher &#x3D; &#123;</span><br><span class="line">  name: &#39;Mrs. Wilson&#39;,</span><br><span class="line">  room: &#39;N231&#39;&#125;let message &#x3D; student.name + &#39; please see &#39; + teacher.name + &#39; in &#39; + teacher.room + &#39; to pick up your report card.&#39;;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>模板字面量本质上是包含嵌入式表达式的字符串字面量.<br>模板字面量用倒引号 ( `` )（而不是单引号 ( ‘’ ) 或双引号( “” )）表示，可以包含用 ${expression} 表示的占位符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let message &#x3D; &#96;$&#123;student.name&#125; please see $&#123;teacher.name&#125; in $&#123;teacher.room&#125; to pick up your report card.&#96;;</span><br></pre></td></tr></table></figure>
-
-<p>解构</p>
-<p>在ES6中,可以使用解构从数组和对象提取值并赋值给独特的变量</p>
-<p>解构数组的值:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const point &#x3D; [10, 25, -34];const [x, y, z] &#x3D; point;console.log(x, y, z);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>Prints: 10 25 -34</p>
-<p>[]表示被解构的数组, x,y,z表示要将数组中的值存储在其中的变量, 在解构数组是, 还可以忽略值, 例如const[x,,z]=point,忽略y坐标.</p>
-<p>解构对象中的值:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const gemstone &#x3D; &#123;</span><br><span class="line">  type: &#39;quartz&#39;,</span><br><span class="line">  color: &#39;rose&#39;,</span><br><span class="line">  karat: 21.29&#125;;const &#123;type, color, karat&#125; &#x3D; gemstone;console.log(type, color, karat);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>花括号 { } 表示被解构的对象，type、color 和 karat 表示要将对象中的属性存储到其中的变量</p>
-<p>对象字面量简写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let type &#x3D; &#39;quartz&#39;;</span><br><span class="line">let color &#x3D; &#39;rose&#39;;</span><br><span class="line">let carat &#x3D; 21.29;</span><br><span class="line">const gemstone &#x3D; &#123;</span><br><span class="line">  type: type,</span><br><span class="line">  color: color,</span><br><span class="line">  carat: carat</span><br><span class="line">&#125;;</span><br><span class="line">console.log(gemstone);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>使用和所分配的变量名称相同的名称初始化对象时如果属性名称和所分配的变量名称一样，那么就可以从对象属性中删掉这些重复的变量名称。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let type &#x3D; &#39;quartz&#39;;</span><br><span class="line">let color &#x3D; &#39;rose&#39;;</span><br><span class="line">let carat &#x3D; 21.29;</span><br><span class="line">const gemstone &#x3D; &#123;type,color,carat&#125;;</span><br><span class="line">console.log(gemstone);</span><br></pre></td></tr></table></figure>
-
-<p>简写方法的名称:</p>
-<p>const gemstone = {<br>  type,<br>  color,<br>  carat,<br>  calculateWorth: function() {<br>    // 将根据类型(type)，颜色(color)和克拉(carat)计算宝石(gemstone)的价值<br>  }};<br>匿名函数被分配给属性 calculateWorth，但是真的需要 function 关键字吗？在 ES6 中不需要！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let gemstone &#x3D; &#123;</span><br><span class="line">  type,</span><br><span class="line">  color,</span><br><span class="line">  carat,</span><br><span class="line">  calculateWorth() &#123; ... &#125;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>for…of循环<br>for…of循环是最新添加到 JavaScript 循环系列中的循环。<br>它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。</p>
-<p>for循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const digits &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">for (let i &#x3D; 0; i &lt; digits.length; i++) &#123;</span><br><span class="line">  console.log(digits[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>for 循环的最大缺点是需要跟踪计数器和退出条件。<br>虽然 for 循环在循环数组时的确具有优势，但是某些数据结构不是数组，因此并非始终适合使用 loop 循环。</p>
-<p>for…in循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const digits &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">for (const index in digits) &#123;</span><br><span class="line">  console.log(digits[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>依然需要使用 index 来访问数组的值<br>当你需要向数组中添加额外的方法（或另一个对象）时，for…in 循环会带来很大的麻烦。因为 for…in 循环循环访问所有可枚举的属性，意味着如果向数组的原型中添加任何其他属性，这些属性也会出现在循环中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.decimalfy &#x3D; function() &#123;</span><br><span class="line">  for (let i &#x3D; 0; i &lt; this.length; i++) &#123;</span><br><span class="line">    this[i] &#x3D; this[i].toFixed(2);</span><br><span class="line">  &#125;&#125;;</span><br><span class="line">const digits &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line"> </span><br><span class="line">for (const index in digits) &#123;</span><br><span class="line">  console.log(digits[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>forEach 循环 是另一种形式的 JavaScript 循环。但是，forEach() 实际上是数组方法，因此只能用在数组中。也无法停止或退出 forEach 循环。如果希望你的循环中出现这种行为，则需要使用基本的 for 循环。</p>
-<p>for…of循环<br>for…of 循环用于循环访问任何可迭代的数据类型。<br>for…of 循环的编写方式和 for…in 循环的基本一样，只是将 in 替换为 of，可以忽略索引。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const digits &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">for (const digit of digits) &#123;</span><br><span class="line">  console.log(digit);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>建议使用复数对象名称来表示多个值的集合。这样，循环该集合时，可以使用名称的单数版本来表示集合中的单个值。例如，for (const button of buttons) {…}。</p>
-<p>for…of 循环还具有其他优势，解决了 for 和 for…in 循环的不足之处。你可以随时停止或退出 for…of 循环。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (const digit of digits) &#123;</span><br><span class="line">  if (digit % 2 &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">    continue;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(digit);&#125;</span><br></pre></td></tr></table></figure>
-
-<p>不用担心向对象中添加新的属性。for…of 循环将只循环访问对象中的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.decimalfy &#x3D; function() &#123;</span><br><span class="line">  for (i &#x3D; 0; i &lt; this.length; i++) &#123;</span><br><span class="line">    this[i] &#x3D; this[i].toFixed(2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">const digits &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">for (const digit of digits) &#123;</span><br><span class="line">  console.log(digit);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>展开运算符</p>
-<p>展开运算符（用三个连续的点 (…) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const books &#x3D; [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, &quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];</span><br><span class="line">console.log(...books);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Cities</span><br></pre></td></tr></table></figure>
-
-
-<p>展开运算符的一个用途是结合数组。</p>
-<p>如果你需要结合多个数组，在有展开运算符之前，必须使用 Array的 concat() 方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const fruits &#x3D; [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;];</span><br><span class="line">const vegetables &#x3D; [&quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;];</span><br><span class="line">const produce &#x3D; fruits.concat(vegetables);</span><br><span class="line">console.log(produce);</span><br></pre></td></tr></table></figure>
-
-<p>剩余参数(可变参数)<br>使用展开运算符将数组展开为多个元素, 使用剩余参数可以将多个元素绑定到一个数组中.<br>剩余参数也用三个连续的点 ( … ) 表示，使你能够将不定数量的元素表示为数组.</p>
-<p>用途1: 将变量赋数组值时:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const order &#x3D; [20.17, 18.67, 1.50, &quot;cheese&quot;, &quot;eggs&quot;, &quot;milk&quot;, &quot;bread&quot;];</span><br><span class="line">const [total, subtotal, tax, ...items] &#x3D; order;</span><br><span class="line">console.log(total, subtotal, tax, items);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>用途2: 可变参数函数<br>对于参数不固定的函数,ES6之前是使用参数对象(arguments)处理:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sum() &#123;</span><br><span class="line">  let total &#x3D; 0;  </span><br><span class="line">  for(const argument of arguments) &#123;</span><br><span class="line">    total +&#x3D; argument;</span><br><span class="line">  &#125;</span><br><span class="line">  return total;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在ES6中使用剩余参数运算符则更为简洁,可读性提高:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function sum(...nums) &#123;</span><br><span class="line">  let total &#x3D; 0;  </span><br><span class="line">  for(const num of nums) &#123;</span><br><span class="line">    total +&#x3D; num;</span><br><span class="line">  &#125;</span><br><span class="line">  return total;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>ES6箭头函数</p>
-<p>ES6之前,使用普通函数把其中每个名字转换为大写形式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const upperizedNames &#x3D; [&#39;Farrin&#39;, &#39;Kagure&#39;, &#39;Asser&#39;].map(function(name) &#123; </span><br><span class="line">  return name.toUpperCase();</span><br><span class="line">&#125;);</span><br><span class="line">箭头函数表示:</span><br><span class="line"></span><br><span class="line">const upperizedNames &#x3D; [&#39;Farrin&#39;, &#39;Kagure&#39;, &#39;Asser&#39;].map(</span><br><span class="line">  name &#x3D;&gt; name.toUpperCase()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>普通函数可以是函数声明或者函数表达式, 但是箭头函数始终都是表达式, 全程是箭头函数表达式, 因此因此仅在表达式有效时才能使用，包括：</p>
-<p>存储在变量中，</p>
-<p>当做参数传递给函数，</p>
-<p>存储在对象的属性中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const greet &#x3D; name &#x3D;&gt; &#96;Hello $&#123;name&#125;!&#96;;</span><br></pre></td></tr></table></figure>
-
-<p>可以如下调用:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">greet(&#39;Asser&#39;);</span><br></pre></td></tr></table></figure>
-
-<p>如果函数的参数只有一个,不需要使用()包起来,但是只有一个或者多个, 则必须需要将参数列表放在圆括号内:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 空参数列表需要括号</span><br><span class="line">const sayHi &#x3D; () &#x3D;&gt; console.log(&#39;Hello Udacity Student!&#39;);</span><br><span class="line">&#x2F;&#x2F; 多个参数需要括号</span><br><span class="line">const orderIceCream &#x3D; (flavor, cone) &#x3D;&gt; console.log(&#96;Here&#39;s your $&#123;flavor&#125; ice cream in a $&#123;cone&#125; cone.&#96;);</span><br><span class="line">orderIceCream(&#39;chocolate&#39;, &#39;waffle&#39;);</span><br></pre></td></tr></table></figure>
-
-<p>一般箭头函数都只有一个表达式作为函数主题:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const upperizedNames &#x3D; [&#39;Farrin&#39;, &#39;Kagure&#39;, &#39;Asser&#39;].map(</span><br><span class="line">  name &#x3D;&gt; name.toUpperCase()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>这种函数表达式形式称为简写主体语法:</p>
-<p>在函数主体周围没有花括号,</p>
-<p>自动返回表达式</p>
-<p>但是如果箭头函数的主体内需要多行代码, 则需要使用常规主体语法:</p>
-<p>它将函数主体放在花括号内</p>
-<p>需要使用 return 语句来返回内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const upperizedNames &#x3D; [&#39;Farrin&#39;, &#39;Kagure&#39;, &#39;Asser&#39;].map( name &#x3D;&gt; &#123;</span><br><span class="line">  name &#x3D; name.toUpperCase();</span><br><span class="line">  return &#96;$&#123;name&#125; has $&#123;name.length&#125; characters in their name&#96;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>javascript标准函数this</p>
-<p>new 对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const mySundae &#x3D; new Sundae(&#39;Chocolate&#39;, [&#39;Sprinkles&#39;, &#39;Hot Fudge&#39;]);</span><br></pre></td></tr></table></figure>
-
-<p>sundae这个构造函数内的this的值是实例对象, 因为他使用new被调用.</p>
-<p>指定的对象</p>
-<p>const result = obj1.printName.call(obj2);<br>函数使用call/apply被调用,this的值指向指定的obj2,因为call()第一个参数明确设置this的指向</p>
-<p>上下`文对象</p>
-<p>data.teleport();<br>函数是对象的方法, this指向就是那个对象,此处this就是指向data.</p>
-<p>全局对象或 undefined</p>
-<p>teleport();<br>此处是this指向全局对象,在严格模式下,指向undefined.</p>
-<p>javascript中this是很复杂的概念, 要详细判断this,请参考this豁然开朗</p>
-<p>箭头函数和this<br>对于普通函数, this的值基于函数如何被调用, 对于箭头函数,this的值基于函数周围的上下文, 换句话说,this的值和函数外面的this的值是一样的.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function IceCream() &#123;</span><br><span class="line">    this.scoops &#x3D; 0;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 为 IceCream 添加 addScoop 方法</span><br><span class="line">IceCream.prototype.addScoop &#x3D; function() &#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        this.scoops++;</span><br><span class="line">        console.log(&#39;scoop added!&#39;);</span><br><span class="line">        console.log(this.scoops); &#x2F;&#x2F; undefined+1&#x3D;NaN</span><br><span class="line">        console.log(dessert.scoops); &#x2F;&#x2F;0</span><br><span class="line">    &#125;, 500);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>标题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const dessert &#x3D; new IceCream();</span><br><span class="line">dessert.addScoop();</span><br></pre></td></tr></table></figure>
-
-<p>传递给 setTimeout() 的函数被调用时没用到 new、call() 或 apply()，也没用到上下文对象。意味着函数内的 this 的值是全局对象，不是 dessert 对象。实际上发生的情况是，创建了新的 scoops 变量（默认值为 undefined），然后递增（undefined + 1 结果为 NaN）;</p>
-<p>解决此问题的方式之一是使用闭包(closure):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 构造函数function IceCream() &#123;</span><br><span class="line">  this.scoops &#x3D; 0;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 为 IceCream 添加 addScoop 方法</span><br><span class="line">IceCream.prototype.addScoop &#x3D; function() &#123;</span><br><span class="line">  const cone &#x3D; this; &#x2F;&#x2F; 设置 &#96;this&#96; 给 &#96;cone&#96;变量</span><br><span class="line">  setTimeout(function() &#123;</span><br><span class="line">    cone.scoops++; &#x2F;&#x2F; 引用&#96;cone&#96;变量</span><br><span class="line">    console.log(&#39;scoop added!&#39;); </span><br><span class="line">    console.log(dessert.scoops);&#x2F;&#x2F;1</span><br><span class="line">  &#125;, 0.5);</span><br><span class="line">&#125;;</span><br><span class="line">const dessert &#x3D; new IceCream();</span><br><span class="line">dessert.addScoop();</span><br></pre></td></tr></table></figure>
-
-<p>箭头函数的作用正是如此, 将setTimeOut()的函数改为剪头函数:</p>
-<p>// 构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function IceCream() &#123;</span><br><span class="line">  this.scoops &#x3D; 0;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 为 IceCream 添加 addScoop 方法</span><br><span class="line">IceCream.prototype.addScoop &#x3D; function() &#123;</span><br><span class="line">  setTimeout(() &#x3D;&gt; &#123; &#x2F;&#x2F; 一个箭头函数被传递给setTimeout</span><br><span class="line">    this.scoops++;</span><br><span class="line">    console.log(&#39;scoop added!&#39;);</span><br><span class="line">    console.log(dessert.scoops);&#x2F;&#x2F;1</span><br><span class="line">  &#125;, 0.5);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">const dessert &#x3D; new IceCream();</span><br><span class="line">dessert.addScoop();</span><br></pre></td></tr></table></figure>
-
-<p>默认参数函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function greet(name, greeting) &#123;</span><br><span class="line">  name &#x3D; (typeof name !&#x3D;&#x3D; &#39;undefined&#39;) ?  name : &#39;Student&#39;;</span><br><span class="line">  greeting &#x3D; (typeof greeting !&#x3D;&#x3D; &#39;undefined&#39;) ?  greeting : &#39;Welcome&#39;;</span><br><span class="line"> </span><br><span class="line">  return &#96;$&#123;greeting&#125; $&#123;name&#125;!&#96;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">greet(); &#x2F;&#x2F; Welcome Student!</span><br><span class="line">greet(&#39;James&#39;); &#x2F;&#x2F; Welcome James!</span><br><span class="line">greet(&#39;Richard&#39;, &#39;Howdy&#39;); &#x2F;&#x2F; Howdy Richard!</span><br></pre></td></tr></table></figure>
-
-<p>greet() 函数中混乱的前两行的作用是什么？它们的作用是当所需的参数未提供时，为函数提供默认的值。但是看起来很麻烦, ES6引入一种新的方式创建默认值, 他叫默认函数参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function greet(name &#x3D; &#39;Student&#39;, greeting &#x3D; &#39;Welcome&#39;) &#123;</span><br><span class="line">  return &#96;$&#123;greeting&#125; $&#123;name&#125;!&#96;;</span><br><span class="line">&#125;</span><br><span class="line">greet(); &#x2F;&#x2F; Welcome Student!</span><br><span class="line">greet(&#39;James&#39;); &#x2F;&#x2F; Welcome James!</span><br><span class="line">greet(&#39;Richard&#39;, &#39;Howdy&#39;); &#x2F;&#x2F; Howdy Richard!</span><br></pre></td></tr></table></figure>
-
-<p>默认值与解构</p>
-<p>默认值与解构数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function createGrid([width &#x3D; 5, height &#x3D; 5]) &#123;</span><br><span class="line">  return &#96;Generates a $&#123;width&#125; x $&#123;height&#125; grid&#96;;</span><br><span class="line">&#125;</span><br><span class="line">createGrid([]); &#x2F;&#x2F; Generates a 5 x 5 grid</span><br><span class="line">createGrid([2]); &#x2F;&#x2F; Generates a 2 x 5 grid</span><br><span class="line">createGrid([2, 3]); &#x2F;&#x2F; Generates a 2 x 3 grid</span><br><span class="line">createGrid([undefined, 3]); &#x2F;&#x2F; Generates a 5 x 3 grid</span><br><span class="line">createGrid()</span><br></pre></td></tr></table></figure>
-<p> 函数预期传入的是数组。它通过解构将数组中的第一项设为 width，第二项设为 height。如果数组为空，或者只有一项，那么就会使用默认参数，并将缺失的参数设为默认值 5。</p>
-<p>但是存在一个问题:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">createGrid(); &#x2F;&#x2F; throws an error</span><br><span class="line">Uncaught TypeError: Cannot read property &#39;Symbol(Symbol.iterator)&#39; of undefined</span><br></pre></td></tr></table></figure>
-
-
-<p>出现错误，因为 createGrid() 预期传入的是数组，然后对其进行解构。因为函数被调用时没有传入数组，所以出现问题。但是，我们可以使用默认的函数参数！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function createGrid([width &#x3D; 5, height &#x3D; 5] &#x3D; []) &#123;</span><br><span class="line">  return &#96;Generating a grid of $&#123;width&#125; by $&#123;height&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line">createGrid(); &#x2F;&#x2F; Generates a 5 x 5 grid</span><br><span class="line">Returns: Generates a 5 x 5 grid</span><br></pre></td></tr></table></figure>
-
-<p>默认值与解构函数</p>
-<p>就像使用数组默认值解构数组一样，函数可以让对象成为一个默认参数，并使用对象解构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function createSundae(&#123;scoops &#x3D; 1, toppings &#x3D; [&#39;Hot Fudge&#39;]&#125;&#x3D;&#123;&#125;) &#123;</span><br><span class="line">  const scoopText &#x3D; scoops &#x3D;&#x3D;&#x3D; 1 ? &#39;scoop&#39; : &#39;scoops&#39;;</span><br><span class="line">  return &#96;Your sundae has $&#123;scoops&#125; $&#123;scoopText&#125; with $&#123;toppings.join(&#39; and &#39;)&#125; toppings.&#96;;</span><br><span class="line">&#125;</span><br><span class="line">createSundae(&#123;&#125;); &#x2F;&#x2F; Your sundae has 1 scoop with Hot Fudge toppings.</span><br><span class="line">createSundae(&#123;scoops: 2&#125;); &#x2F;&#x2F; Your sundae has 2 scoops with Hot Fudge toppings.</span><br><span class="line">createSundae(&#123;scoops: 2, toppings: [&#39;Sprinkles&#39;]&#125;); &#x2F;&#x2F; Your sundae has 2 scoops with Sprinkles toppings.</span><br><span class="line">createSundae(&#123;toppings: [&#39;Cookie Dough&#39;]&#125;); &#x2F;&#x2F; Your sundae has 1 scoop with Cookie Dough toppings.</span><br><span class="line">createSundae(); &#x2F;&#x2F; Your sundae has 1 scoop with Hot Fudge toppings.</span><br></pre></td></tr></table></figure>
-
-<p>数组默认值与对象默认值</p>
-<p>默认函数参数只是个简单的添加内容，但是却带来很多便利！与数组默认值相比，对象默认值具备的一个优势是能够处理跳过的选项。看看下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function createSundae(&#123;scoops &#x3D; 1, toppings &#x3D; [&#39;Hot Fudge&#39;]&#125; &#x3D; &#123;&#125;) &#123; … &#125;</span><br></pre></td></tr></table></figure>
-
-<p>在 createSundae() 函数使用对象默认值进行解构时，如果你想使用 scoops 的默认值，但是更改 toppings，那么只需使用 toppings 传入一个对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createSundae(&#123;toppings: [&#39;Hot Fudge&#39;, &#39;Sprinkles&#39;, &#39;Caramel&#39;]&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>将上述示例与使用数组默认值进行解构的同一函数相对比。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function createSundae([scoops &#x3D; 1, toppings &#x3D; [&#39;Hot Fudge&#39;]] &#x3D; []) &#123; … &#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于这个函数，如果想使用 scoops 的默认数量，但是更改 toppings，则必须以这种奇怪的方式调用你的函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createSundae([undefined, [&#39;Hot Fudge&#39;, &#39;Sprinkles&#39;, &#39;Caramel&#39;]]);</span><br></pre></td></tr></table></figure>
-
-<p>因为数组是基于位置的，我们需要传入 undefined 以跳过第一个参数（并使用默认值）来到达第二个参数。</p>
-<p>Javascript类<br>ES5创建类:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Plane(numEngines) &#123;</span><br><span class="line">  this.numEngines &#x3D; numEngines;</span><br><span class="line">  this.enginesActive &#x3D; false;&#125;&#x2F;&#x2F; 由所有实例 &quot;继承&quot; 的方法Plane.prototype.startEngines &#x3D; function () &#123;</span><br><span class="line">  console.log(&#39;starting engines...&#39;);</span><br><span class="line">  this.enginesActive &#x3D; true;&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>ES6类只是一个语法糖,原型继续实际上在底层隐藏起来, 与传统类机制语言有些区别.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Plane &#123;</span><br><span class="line">  &#x2F;&#x2F;constructor方法虽然在类中,但不是原型上的方法,只是用来生成实例的.</span><br><span class="line">  constructor(numEngines) &#123;</span><br><span class="line">    this.numEngines &#x3D; numEngines;</span><br><span class="line">    this.enginesActive &#x3D; false;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F;原型上的方法, 由所有实例对象共享.</span><br><span class="line">  startEngines() &#123;</span><br><span class="line">    console.log(&#39;starting engines…&#39;);</span><br><span class="line">    this.enginesActive &#x3D; true;</span><br><span class="line">  &#125;&#125;console.log(typeof Plane); &#x2F;&#x2F;function</span><br></pre></td></tr></table></figure>
-
-<p>javascript中类其实只是function, 方法之间不能使用,,不用逗号区分属性和方法.</p>
-<p>静态方法<br>要添加静态方法，请在方法名称前面加上关键字 <strong>==static==</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Plane &#123;</span><br><span class="line">  constructor(numEngines) &#123;</span><br><span class="line">    this.numEngines &#x3D; numEngines;</span><br><span class="line">    this.enginesActive &#x3D; false;</span><br><span class="line">  &#125;</span><br><span class="line">  static badWeather(planes) &#123;</span><br><span class="line">    for (plane of planes) &#123;</span><br><span class="line">      plane.enginesActive &#x3D; false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  startEngines() &#123;</span><br><span class="line">    console.log(&#39;starting engines…&#39;);</span><br><span class="line">    this.enginesActive &#x3D; true;</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>关键字class带来其他基于类的语言的很多思想,但是没有向javascript中添加此功能</p>
-<p>javascript类实际上还是原型继承</p>
-<p>创建javascript类的新实例时必须使用new关键字</p>
-<p>super 和 extends<br>使用新的super和extends关键字扩展类:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Tree &#123;</span><br><span class="line">  constructor(size &#x3D; &#39;10&#39;, leaves &#x3D; &#123;spring: &#39;green&#39;, summer: &#39;green&#39;, fall: &#39;orange&#39;, winter: null&#125;) &#123;</span><br><span class="line">    this.size &#x3D; size;</span><br><span class="line">    this.leaves &#x3D; leaves;</span><br><span class="line">    this.leafColor &#x3D; null;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  changeSeason(season) &#123;</span><br><span class="line">    this.leafColor &#x3D; this.leaves[season];</span><br><span class="line">    if (season &#x3D;&#x3D;&#x3D; &#39;spring&#39;) &#123;</span><br><span class="line">      this.size +&#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;&#125;class Maple extends Tree &#123;</span><br><span class="line">  constructor(syrupQty &#x3D; 15, size, leaves) &#123;</span><br><span class="line">    super(size, leaves); &#x2F;&#x2F;super用作函数</span><br><span class="line">    this.syrupQty &#x3D; syrupQty;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  changeSeason(season) &#123;</span><br><span class="line">    super.changeSeason(season);&#x2F;&#x2F;super用作对象</span><br><span class="line">    if (season &#x3D;&#x3D;&#x3D; &#39;spring&#39;) &#123;</span><br><span class="line">      this.syrupQty +&#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  gatherSyrup() &#123;</span><br><span class="line">    this.syrupQty -&#x3D; 3;</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用ES5编写同样功能的类:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Tree(size, leaves) &#123;</span><br><span class="line">  this.size &#x3D; size || 10;</span><br><span class="line">  this.leaves &#x3D; leaves || &#123;spring: &#39;green&#39;, summer: &#39;green&#39;, fall: &#39;orange&#39;, winter: null&#125;;</span><br><span class="line">  this.leafColor;&#125;Tree.prototype.changeSeason &#x3D; function(season) &#123;</span><br><span class="line">  this.leafColor &#x3D; this.leaves[season];</span><br><span class="line">  if (season &#x3D;&#x3D;&#x3D; &#39;spring&#39;) &#123;</span><br><span class="line">    this.size +&#x3D; 1;</span><br><span class="line">  &#125;&#125;function Maple (syrupQty, size, leaves) &#123;</span><br><span class="line">  Tree.call(this, size, leaves);</span><br><span class="line">  this.syrupQty &#x3D; syrupQty || 15;&#125;Maple.prototype &#x3D; Object.create(Tree.prototype);Maple.prototype.constructor &#x3D; Maple;Maple.prototype.changeSeason &#x3D; function(season) &#123;</span><br><span class="line">  Tree.prototype.changeSeason.call(this, season);</span><br><span class="line">  if (season &#x3D;&#x3D;&#x3D; &#39;spring&#39;) &#123;</span><br><span class="line">    this.syrupQty +&#x3D; 1;</span><br><span class="line">  &#125;&#125;Maple.prototype.gatherSyrup &#x3D; function() &#123;</span><br><span class="line">  this.syrupQty -&#x3D; 3;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>super 必须在 this 之前被调用</p>
-<p>在子类构造函数中，在使用 this 之前，必须先调用超级类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Apple &#123;&#125;class GrannySmith extends Apple &#123;</span><br><span class="line">  constructor(tartnessLevel, energy) &#123;</span><br><span class="line">    this.tartnessLevel &#x3D; tartnessLevel; &#x2F;&#x2F; 在 &#39;super&#39; 之前会抛出一个错误！</span><br><span class="line">    super(energy); </span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thinkphp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/02/2020-03-06-es6/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/02/2020-03-06-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          扩展运算符
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -560,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
